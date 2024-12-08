@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0efb702-0b89-4601-b987-89ca6a925a89" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/preload.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/auto-imports.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/auto-imports.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/renderer/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preload/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/src/compenents/sanGuoSkin_layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/compenents/sanGuoSkin_layout.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +94,7 @@
       <workItem from="1733464267653" duration="2972000" />
       <workItem from="1733557693322" duration="38000" />
       <workItem from="1733557927832" duration="5445000" />
-      <workItem from="1733628087780" duration="4492000" />
+      <workItem from="1733628087780" duration="5861000" />
     </task>
     <servers />
   </component>

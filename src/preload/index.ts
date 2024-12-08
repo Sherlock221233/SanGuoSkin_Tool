@@ -1,9 +1,13 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+
+console.log('👋 Preload')
 
 // Custom APIs for renderer
 const api = {
-  
+    getPathAndAction: async (cur_path:string) => {
+      return ipcRenderer.invoke('getPathAndAction',cur_path)
+    }
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

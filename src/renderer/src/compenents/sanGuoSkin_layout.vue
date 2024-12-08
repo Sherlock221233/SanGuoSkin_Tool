@@ -2,7 +2,7 @@
     <el-form label-width="auto" >
         <el-form-item label="路径:">
             <el-input v-model="filePath" readonly="true"  style="width: calc(100vh - 0px);height: 27px;"></el-input>
-            <el-button type="primary" @click="()=>{}" style="height: 27px;margin-left: 10px;">选择路径</el-button>
+            <el-button type="primary"  @click="getFilePath" style="height: 27px;margin-left: 10px;">选择路径</el-button>
         </el-form-item>
         <el-form-item label="" style="margin-left: 10px;">
 
@@ -61,6 +61,7 @@
 <script lang="ts">
 import { json } from 'stream/consumers';
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
+import { ipcRenderer } from 'electron'
 
 export default {
     setup() {
@@ -78,8 +79,24 @@ export default {
         const Angle = ref<number>(0.00)
         const Speed = ref<number>(1.00)
 
+        const getFilePath = async ()=>{
+            let cur_str:string = (filePath.value.substring(0,filePath.value.toString().lastIndexOf('\\')))
+            const path:string  = await window.api.getPathAndAction(cur_str);
+            // const res = await ipcRenderer.invoke('dialog:openFile');
+            // if(res){
+            //     console.log(res)
+            // }
+            if(path){
+                filePath.value = path
+            }
+
+            // console.log(path)
+        }
+
         
-        return { version,action,filePath,actionTeShu,actionShan,Alpha,Skin,json,X_position,Y_position,Scale,Angle,Speed };
+        return { version,action,filePath,actionTeShu,actionShan,Alpha,Skin,json,X_position,Y_position,Scale,Angle,Speed,
+getFilePath
+         };
     }
 };
 </script>
