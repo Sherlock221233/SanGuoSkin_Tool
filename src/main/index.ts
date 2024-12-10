@@ -60,9 +60,11 @@ ipcMain.handle('getPathAndAction', async (event) => {
   // const atlasData = fs.readFileSync(atlas_path, 'utf-8');
   // const atlas = new spine.TextureAtlas(atlasData);
 
-  let context:string = ""
+  let context: Record<string, any> = {};
   //如果是skel格式，则需要转换为十六进制并且重新打开
   // 读取文件并根据文件格式处理
+
+  const paras:Record<string,string[]> = {};
 
   if (file_path.endsWith('.skel')) {
     try {
@@ -75,17 +77,39 @@ ipcMain.handle('getPathAndAction', async (event) => {
   else {
     const data = fs.readFileSync(file_path, 'utf-8');
     context = JSON.parse(data);
-    console.log("非skel文件，直接读取文件内容")
-  }
+
+    try {
+      if(context.skins)
+        {
+          paras['skins'] = [];
+          for (const skin of context.skins) {
+    
+            paras['skins'].push(skin.name);
+          }
+        }
+    
+        if(context.animations)
+        {
+          paras['animations'] = [];
+          Object.keys(context.animations).forEach(key => {
+            paras.animations.push(key);
+        });
+        }
+    
+        if(context.skeleton)
+          {
+            paras['version'] = [];
+            paras['version'].push(context.skeleton.spine.match(/^(\d+\.\d+)/))
+          }
+    
+    } catch (error:any) {
+      dialog.showErrorBox("错误",error.toString());
+    }
 
 
-  if(context!="")
-  {
-    console.log("读取文件成功")
-  }
-  console.log(context)
+    }
 
-  return {file_path};
+  return {file_path,paras};
 
 })
 

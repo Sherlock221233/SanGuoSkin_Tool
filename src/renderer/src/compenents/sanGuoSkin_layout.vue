@@ -117,6 +117,7 @@ export default {
             const res= await window.api.getPathAndAction();
 
             const path:string = res.file_path
+            
 
             // console.log(path)
 
