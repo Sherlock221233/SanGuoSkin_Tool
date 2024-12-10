@@ -524,6 +524,70 @@
   resolved "https://registry.npmmirror.com/@eslint/js/-/js-8.57.1.tgz"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
+"@esotericsoftware/spine-canvas@4.2.67", "@esotericsoftware/spine-canvas@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-canvas/-/spine-canvas-4.2.67.tgz#2a8373e127bca1426643751bd2626ac2367401b4"
+  integrity sha512-ac5scJ12ml+PIxDmFp3UBHA+vK7qh8IjZY6VndgK18l3EGY64k+WBcydsK8gwE0YxTIgNzMNCahaWsUUvpsaVw==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+
+"@esotericsoftware/spine-canvaskit@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-canvaskit/-/spine-canvaskit-4.2.67.tgz#2014163bb77198eff7dd82fc38fad32dfce6ed10"
+  integrity sha512-g0lx3VqY9qAj94eN+WSkeL029rSVciMTxPEWeHXgbQPv+y48GaYfm8b8ns5bbj/vLN6bYbFZetaQQit2q2UJ2Q==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+    canvaskit-wasm "0.39.1"
+
+"@esotericsoftware/spine-core@4.2.67", "@esotericsoftware/spine-core@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-core/-/spine-core-4.2.67.tgz#092ab2dc60e0bc4295a3474871261711c8e3cf27"
+  integrity sha512-rZmdlJC/PYCZx9Tb94hHNezNJqb8er95LoDZ01/m7kSD7DRZkyLL89CwsQR3Qr8O9qDybc6NhpnmD0AKlXRrLQ==
+
+"@esotericsoftware/spine-phaser@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-phaser/-/spine-phaser-4.2.67.tgz#03606aa387d6b5172b424f6eec34c40b61ef6f42"
+  integrity sha512-Uerd3xXbjES09pCor0xMHlopfOWzSIEZeWZRekjGGp5WRUBb7t/JqJKpA03I/AfHrgceHp2iFMdkRXJkqx+uCg==
+  dependencies:
+    "@esotericsoftware/spine-canvas" "4.2.67"
+    "@esotericsoftware/spine-core" "4.2.67"
+    "@esotericsoftware/spine-webgl" "4.2.67"
+
+"@esotericsoftware/spine-pixi-v7@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-pixi-v7/-/spine-pixi-v7-4.2.67.tgz#ec619592b2edb1793164915f4f45446085a47906"
+  integrity sha512-FTK3iggCe6bnbWytEBuobT/rgd5sY8ikInKYfQJT/syyB+zgJRSokQ/SiGvb6CAowEOXqzd+1U17rIXuBIA2pg==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+
+"@esotericsoftware/spine-pixi-v8@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-pixi-v8/-/spine-pixi-v8-4.2.67.tgz#46922165cb410850196e41fd3ec820c99da2fe1c"
+  integrity sha512-UpYAi7h1Vm5xT3rX0PEvCctIHkhJpTCx6DJUJd99SqVT0qRqzeHEESpj+8zqzYRcxbm0B6DXcnFgdVB1w8UH7w==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+
+"@esotericsoftware/spine-player@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-player/-/spine-player-4.2.67.tgz#a2cc3c3e33390d6a20ebf1c4a57e3adb5b30bf75"
+  integrity sha512-x7Tz3YumvGay+XWnVC5jkTAbqii7NK0vM+ifD3+0mm2nuVJnZC5bJLC90He5LCtpkKDWv8kuecyW3IZA1yXZ3w==
+  dependencies:
+    "@esotericsoftware/spine-webgl" "4.2.67"
+
+"@esotericsoftware/spine-threejs@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-threejs/-/spine-threejs-4.2.67.tgz#17cf694fc480acef18397c9da397d090d50de24f"
+  integrity sha512-BWmL9ffa2ScaoGIxG6qizp6vx2epGDVbrdT8d8VdgDyef1ZGvwXRXxGTq5FEvoOAG9I3nMuYruHxy7+axM2UTw==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+
+"@esotericsoftware/spine-webgl@4.2.67", "@esotericsoftware/spine-webgl@^4.2.67":
+  version "4.2.67"
+  resolved "https://registry.npmmirror.com/@esotericsoftware/spine-webgl/-/spine-webgl-4.2.67.tgz#0fc097ded28e903862cad9d59754810cf33889ee"
+  integrity sha512-QaFPaliwpSeUoZsI7q3iNxqdm38pk9+BGVUIX5bUiDev9LONc0q2KzFn4Gs3E/tHDHJV9jcfpvAzKbBlKVuiww==
+  dependencies:
+    "@esotericsoftware/spine-core" "4.2.67"
+
 "@floating-ui/core@^1.6.0":
   version "1.6.8"
   resolved "https://registry.npmmirror.com/@floating-ui/core/-/core-1.6.8.tgz"
@@ -1210,6 +1274,11 @@
   dependencies:
     vue-demi "*"
 
+"@webgpu/types@0.1.21":
+  version "0.1.21"
+  resolved "https://registry.npmmirror.com/@webgpu/types/-/types-0.1.21.tgz#b181202daec30d66ccd67264de23814cfd176d3a"
+  integrity sha512-pUrWq3V5PiSGFLeLxoGqReTZmiiXwY3jRkIG5sLLKjyqNxrwm/04b4nw7LSmGWJcKk59XOM/YRTUwOzo4MMlow==
+
 "@xmldom/xmldom@^0.8.8":
   version "0.8.10"
   resolved "https://registry.npmmirror.com/@xmldom/xmldom/-/xmldom-0.8.10.tgz"
@@ -1557,6 +1626,13 @@ caniuse-lite@^1.0.30001669:
   version "1.0.30001686"
   resolved "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001686.tgz"
   integrity sha512-Y7deg0Aergpa24M3qLC5xjNklnKnhsmSyR/V89dLZ1n0ucJIFNs7PgR2Yfa/Zf6W79SbBicgtGxZr2juHkEUIA==
+
+canvaskit-wasm@0.39.1:
+  version "0.39.1"
+  resolved "https://registry.npmmirror.com/canvaskit-wasm/-/canvaskit-wasm-0.39.1.tgz#c3c8f3962cbabbedf246f7bcf90e859013c7eae9"
+  integrity sha512-Gy3lCmhUdKq+8bvDrs9t8+qf7RvcjuQn+we7vTVVyqgOVO1UVfHpsnBxkTZw+R4ApEJ3D5fKySl9TU11hmjl/A==
+  dependencies:
+    "@webgpu/types" "0.1.21"
 
 chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.2:
   version "4.1.2"

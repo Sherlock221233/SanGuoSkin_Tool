@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b0efb702-0b89-4601-b987-89ca6a925a89" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electron.vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/electron.vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/global.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preload/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/preload/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/renderer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/src/compenents/sanGuoSkin_layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/src/compenents/sanGuoSkin_layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +100,8 @@
       <workItem from="1733557693322" duration="38000" />
       <workItem from="1733557927832" duration="5445000" />
       <workItem from="1733628087780" duration="5861000" />
+      <workItem from="1733649491332" duration="1230000" />
+      <workItem from="1733737159128" duration="1191000" />
     </task>
     <servers />
   </component>

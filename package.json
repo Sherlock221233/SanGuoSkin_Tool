@@ -5,6 +5,7 @@
   "main": "./out/main/index.js",
   "author": "Komorebi_寒羽",
   "homepage": "https://electron-vite.org",
+  "type": "module" ,
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts,.vue --fix",
@@ -23,6 +24,15 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
+    "@esotericsoftware/spine-canvas": "^4.2.67",
+    "@esotericsoftware/spine-canvaskit": "^4.2.67",
+    "@esotericsoftware/spine-core": "^4.2.67",
+    "@esotericsoftware/spine-phaser": "^4.2.67",
+    "@esotericsoftware/spine-pixi-v7": "^4.2.67",
+    "@esotericsoftware/spine-pixi-v8": "^4.2.67",
+    "@esotericsoftware/spine-player": "^4.2.67",
+    "@esotericsoftware/spine-threejs": "^4.2.67",
+    "@esotericsoftware/spine-webgl": "^4.2.67",
     "electron-updater": "^6.1.7"
   },
   "devDependencies": {

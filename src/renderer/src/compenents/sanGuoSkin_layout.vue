@@ -63,6 +63,7 @@ import { json } from 'stream/consumers';
 import { defineComponent, ref, computed, watch, nextTick } from 'vue'
 import { ipcRenderer } from 'electron'
 
+
 export default {
     setup() {
         const filePath = ref<string>('')
@@ -81,16 +82,13 @@ export default {
 
         const getFilePath = async ()=>{
             let cur_str:string = (filePath.value.substring(0,filePath.value.toString().lastIndexOf('\\')))
-            const path:string  = await window.api.getPathAndAction(cur_str);
-            // const res = await ipcRenderer.invoke('dialog:openFile');
-            // if(res){
-            //     console.log(res)
-            // }
-            if(path){
-                filePath.value = path
-            }
+            const res= await window.api.getPathAndAction(cur_str);
 
-            // console.log(path)
+            const path:string = res.file_path
+
+            console.log(path)
+
+            filePath.value = path
         }
 
         
