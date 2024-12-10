@@ -5,6 +5,8 @@ import icon from '../../resources/icon.png?asset'
 import {SkeletonBinary,SkeletonJson,AttachmentLoader, AtlasAttachmentLoader, TextureAtlas} from '@esotericsoftware/spine-core'
 // import spine from "@esotericsoftware/spine-core"
 
+let cur_path;
+
 const path = require('path');
 const fs = require('fs');
 
@@ -36,7 +38,7 @@ function createWindow(): void {
 }
 
 
-ipcMain.handle('getPathAndAction', async (event,cur_path:string) => {
+ipcMain.handle('getPathAndAction', async (event) => {
   const filePath = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile'], // 选择文件
     filters: [
@@ -52,7 +54,7 @@ ipcMain.handle('getPathAndAction', async (event,cur_path:string) => {
   }
 
   const file_path = filePath.filePaths[0];
-
+  cur_path = file_path.substring(0,file_path.lastIndexOf("\\"));
 
   // const atlas_path = file_path.replace(/\.skel$/, '.atlas');
   // const atlasData = fs.readFileSync(atlas_path, 'utf-8');
@@ -64,7 +66,8 @@ ipcMain.handle('getPathAndAction', async (event,cur_path:string) => {
 
   if (file_path.endsWith('.skel')) {
     try {
-      
+      const msg = ""
+      mainWindow.webContents.send('alert_warning',msg);
     } catch (error) {
       console.log(error)
     }

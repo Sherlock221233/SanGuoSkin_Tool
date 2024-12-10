@@ -5,8 +5,14 @@ console.log('👋 Preload')
 
 // Custom APIs for renderer
 const api = {
-    getPathAndAction: async (cur_path:string) => {
-      return ipcRenderer.invoke('getPathAndAction',cur_path)
+    getPathAndAction: async () => {
+      return ipcRenderer.invoke('getPathAndAction')
+    },
+    alert_warning:(callback)=>
+    {
+      ipcRenderer.on('alert_warning',(_event,msg:string)=>{
+        callback(msg)
+      })
     }
 }
 
