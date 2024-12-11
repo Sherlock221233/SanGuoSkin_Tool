@@ -99,7 +99,7 @@ ipcMain.handle('getPathAndAction', async (event) => {
         if(context.skeleton)
           {
             paras['version'] = [];
-            paras['version'].push(context.skeleton.spine.match(/^(\d+\.\d+)/))
+            paras['version'].push(context.skeleton.spine.match(/(\d+\.\d+?)/)[0])
           }
     
     } catch (error:any) {

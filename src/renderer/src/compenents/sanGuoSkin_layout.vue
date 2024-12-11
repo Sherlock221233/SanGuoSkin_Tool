@@ -22,18 +22,21 @@
         <el-form-item label="" style="margin-left: 10px;">
 
             <el-text style="margin-right: 12px;">播放动作:</el-text>
-            <el-select v-model="action" placeholder="请选择动作" style="width: 130px;">  
-                <el-option :value="'_action占位符'" label=" _action占位符" ></el-option>
+            <el-select id="action" v-model="action" placeholder="请选择动作" style="width: 130px;">  
+                <el-option :value="'无'" label=" 无" ></el-option>
+                <el-option v-for="item in actions" :key="item" :value="item" :label="item"></el-option>
             </el-select>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">特殊待机动作:</el-text>
-            <el-select v-model="actionTeShu" placeholder="请选择动作" style="width: 130px;">
-                <el-option :value="'_action特殊占位符'" label=" _action特殊占位符" ></el-option>
+            <el-select id="action1" v-model="actionTeShu" placeholder="请选择动作" style="width: 130px;">
+                <el-option :value="'无'" label=" 无" ></el-option>
+                <el-option v-for="item in actions" :key="item" :value="item" :label="item"></el-option>
             </el-select>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">出闪动作:</el-text>
-            <el-select v-model="actionShan" placeholder="请选择动作" style="width: 130px;">
-                <el-option :value="'_action闪占位符'" label=" _action闪占位符" ></el-option>
+            <el-select id="action2" v-model="actionShan" placeholder="请选择动作" style="width: 130px;">
+                <el-option :value="'无'" label=" 无" ></el-option>
+                <el-option v-for="item in actions" :key="item" :value="item" :label="item"></el-option>
             </el-select>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">Version:</el-text>
@@ -43,8 +46,8 @@
         <el-form-item label="" style="margin-left: 10px;"> 
 
             <el-text style="margin-right: 12px;">皮肤:</el-text>
-            <el-select v-model="Skin" placeholder="请选择皮肤" style="width: 130px;">
-                <el-option :value="'default'" label="default" ></el-option>
+            <el-select  id = 'skins' v-model="Skin" placeholder="请选择皮肤" style="width: 130px;">
+                <el-option v-for="item in skinList" :key="item" :value="item" :label="item"></el-option>
             </el-select>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">Alpha:</el-text>
@@ -91,10 +94,10 @@ import { ipcRenderer } from 'electron'
 export default {
     setup() {
         const filePath = ref<string>('')
-        const action = ref<string>('_action占位符')
+        const action = ref<string>('无')
         const version = ref<number>(3.8)
-        const actionTeShu = ref<string>('_action特殊占位符')
-        const actionShan = ref<string>('_action闪占位符')
+        const actionTeShu = ref<string>('无')
+        const actionShan = ref<string>('无')
         const Skin = ref<string>('default')
         const Alpha = ref<boolean>(false)
         const json = ref<boolean>(false)
@@ -105,28 +108,51 @@ export default {
         const Speed = ref<number>(1.00)
         const dialogVisible = ref<boolean>(false)
         const alertMessage = ref<string>('')
-
+        const skinList:string[] = ['default']
+        const actions:string[] = ['_action占位符']
 
         function GetData(){
-            return {filePath,action,version,actionTeShu,actionShan,Skin,Alpha,json,X_position,Y_position,
-                Scale,Angle,Speed
-            }
+            const out:string = "'name': "+filePath.value
         }
 
         const getFilePath = async ()=>{
             const res= await window.api.getPathAndAction();
 
             const path:string = res.file_path
-            
+            const paras:Record<string,string[]> = res.paras
+
+            try {
+                if(paras['skins']){
+                skinList.length=0;
+                skinList.push(...paras['skins'])
+                }
+
+                if(paras['animations']){
+                    actions.length=0;
+                    actions.push(...paras['animations'])
+                }
+
+                if(paras['version'])
+                {
+                    version.value = Number(paras['version'][0])
+                }
+            } catch (error:any) {
+                alertMessage.value = error.message
+                dialogVisible.value = true
+            }
+
 
             // console.log(path)
 
             filePath.value = path
+            if(path.endsWith('.json')){
+                json.value = true
+            }
         }
         
         defineExpose({ GetData,version });
         return { version,action,filePath,actionTeShu,actionShan,Alpha,Skin,json,X_position,Y_position,Scale,Angle,Speed,
-getFilePath,dialogVisible,alertMessage
+getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
          };
     },
 
