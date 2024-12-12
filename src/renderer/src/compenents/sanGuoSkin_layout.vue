@@ -22,7 +22,7 @@
         <el-form-item label="" style="margin-left: 10px;">
 
             <el-text style="margin-right: 12px;">播放动作:</el-text>
-            <el-select id="action" v-model="action" placeholder="请选择动作" style="width: 130px;">  
+            <el-select id="action" v-model="action" placeholder="请选择动作" style="width: 130px;">
                 <el-option :value="'无'" label=" 无" ></el-option>
                 <el-option v-for="item in actions" :key="item" :value="item" :label="item"></el-option>
             </el-select>
@@ -43,7 +43,7 @@
             <el-input-number v-model="version" controls-position="right" style="width: 100px;" :step="0.1" :precision="1"/>
 
         </el-form-item>
-        <el-form-item label="" style="margin-left: 10px;"> 
+        <el-form-item label="" style="margin-left: 10px;">
 
             <el-text style="margin-right: 12px;">皮肤:</el-text>
             <el-select  id = 'skins' v-model="Skin" placeholder="请选择皮肤" style="width: 130px;">
@@ -61,17 +61,19 @@
                 <el-option :value="false" label="否" ></el-option>
                 <el-option :value="true" label="是"></el-option>
             </el-select>
-          
+
             <el-text style="margin-right: 12px;margin-left: 7px;">Speed(播放速度):</el-text>
             <el-input-number v-model="Speed" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
-           
+
         </el-form-item>
         <el-form-item>
             <el-text style="margin-right: 12px;margin-left: 7px;">X:</el-text>
-            <el-input-number v-model="X_position" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
-           
+            <el-input-number v-model="X_position_1" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
+            <el-input-number v-model="X_position_2" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
+
             <el-text style="margin-right: 12px;margin-left: 7px;">Y:</el-text>
-            <el-input-number v-model="Y_position" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
+            <el-input-number v-model="Y_position_1" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
+            <el-input-number v-model="Y_position_2" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">Scale大小比例:</el-text>
             <el-input-number v-model="Scale" controls-position="right" style="width: 100px;" :step="0.01" :precision="2"/>
@@ -101,18 +103,53 @@ export default {
         const Skin = ref<string>('default')
         const Alpha = ref<boolean>(false)
         const json = ref<boolean>(false)
-        const X_position = ref<number>(0.00)
-        const Y_position = ref<number>(0.00)
+        const X_position_1 = ref<number>(0.00)
+        const X_position_2 = ref<number>(0.00)
+        const Y_position_1 = ref<number>(0.00)
+        const Y_position_2 = ref<number>(0.00)  
         const Scale = ref<number>(0.50)
         const Angle = ref<number>(0.00)
         const Speed = ref<number>(1.00)
         const dialogVisible = ref<boolean>(false)
         const alertMessage = ref<string>('')
-        const skinList:string[] = ['default']
-        const actions:string[] = ['_action占位符']
+        const skinList = ref<string[]>(['default'])
+        const actions = ref<string[]>(['_action占位符'])
 
-        function GetData(){
-            const out:string = "'name': "+filePath.value
+        function GetData(skinName:string){
+            const file_name:string = filePath.value.slice(filePath.value.lastIndexOf('\\')+1,filePath.value.lastIndexOf('.'))
+
+            if(action.value=='无')
+            {
+                alertMessage.value = "皮肤待机动作不能为无"
+                dialogVisible.value = true
+                return null
+            }
+
+            let out_para:string = 
+            ` name: 'skins_export/${skinName}/${file_name}',\n action: '${action.value}',\n x: [${X_position_1.value}, ${X_position_2.value}],\n y: [${Y_position_1.value}, ${Y_position_2.value}],\n scale: ${Scale.value},\n version: '${version.value}',\n skin:'${Skin.value}',\n`
+            if(actionShan.value!='无')
+            {
+                out_para+=
+                ` Shan: '${actionShan.value}',\n`
+            }     
+            if(actionTeShu.value!='无')
+            {
+                out_para+=
+                ` TeShu: '${actionTeShu.value}',\n`
+            }
+            if(Alpha.value==true)
+            {
+                out_para+=
+                ` Alpha:${Alpha.value},\n`
+            }
+            if(json.value==true)
+            {
+                out_para+=
+                ` Json:'${json.value}'\n`
+            }
+           
+             
+            return out_para
         }
 
         const getFilePath = async ()=>{
@@ -123,13 +160,16 @@ export default {
 
             try {
                 if(paras['skins']){
-                skinList.length=0;
-                skinList.push(...paras['skins'])
+                skinList.value.length=0;
+                for(let i =0;i<paras['skins'].length;i++)
+                {
+                    skinList.value.push(paras['skins'][i])
+                }
                 }
 
                 if(paras['animations']){
-                    actions.length=0;
-                    actions.push(...paras['animations'])
+                    actions.value.length=0;
+                    actions.value.push(...paras['animations'])
                 }
 
                 if(paras['version'])
@@ -149,9 +189,9 @@ export default {
                 json.value = true
             }
         }
-        
+
         defineExpose({ GetData,version });
-        return { version,action,filePath,actionTeShu,actionShan,Alpha,Skin,json,X_position,Y_position,Scale,Angle,Speed,
+        return { version,action,filePath,actionTeShu,actionShan,Alpha,Skin,json,X_position_1,X_position_2,Y_position_1,Y_position_2,Scale,Angle,Speed,
 getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
          };
     },

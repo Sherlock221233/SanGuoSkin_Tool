@@ -28,7 +28,14 @@ const mainSkin = ref<any>(null)
 
 function export_para()
 {
-  console.log(mainSkin.value!.version)
+  
+  if(String(mainSkin.value.file_path).trim().length==0)
+  {
+      return
+  }
+  
+  const out = mainSkin.value!.GetData(skinName.value)
+  console.log(out)
 }
 
 </script>
