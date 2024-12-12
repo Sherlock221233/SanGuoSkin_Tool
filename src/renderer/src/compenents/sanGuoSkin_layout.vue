@@ -28,7 +28,7 @@
             </el-select>
 
             <el-text style="margin-right: 12px;margin-left: 7px;">特殊待机动作:</el-text>
-            <el-select id="action1" v-model="actionTeShu" placeholder="请选择动作" style="width: 130px;">
+            <el-select id="action1" v-model="actionTeShu" placeholder="请选择动作"  style="width: 130px;">
                 <el-option :value="'无'" label=" 无" ></el-option>
                 <el-option v-for="item in actions" :key="item" :value="item" :label="item"></el-option>
             </el-select>
@@ -114,6 +114,8 @@ export default {
         const alertMessage = ref<string>('')
         const skinList = ref<string[]>(['default'])
         const actions = ref<string[]>(['_action占位符'])
+  
+
 
         function GetData(skinName:string){
             const file_name:string = filePath.value.slice(filePath.value.lastIndexOf('\\')+1,filePath.value.lastIndexOf('.'))
