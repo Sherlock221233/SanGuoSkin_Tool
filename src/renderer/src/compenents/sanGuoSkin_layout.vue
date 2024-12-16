@@ -132,22 +132,22 @@ export default {
             if(actionShan.value!='无')
             {
                 out_para+=
-                ` Shan: '${actionShan.value}',\n`
+                ` shan: '${actionShan.value}',\n`
             }     
             if(actionTeShu.value!='无')
             {
                 out_para+=
-                ` TeShu: '${actionTeShu.value}',\n`
+                ` teShu: '${actionTeShu.value}',\n`
             }
             if(Alpha.value==true)
             {
                 out_para+=
-                ` Alpha:${Alpha.value},\n`
+                ` alpha:${Alpha.value},\n`
             }
             if(json.value==true)
             {
                 out_para+=
-                ` Json:'${json.value}'\n`
+                ` json:'${json.value}'\n`
             }
            
              

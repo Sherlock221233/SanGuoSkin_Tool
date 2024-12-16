@@ -2,11 +2,11 @@ import { app, shell, BrowserWindow, ipcMain,dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
-import {SkeletonBinary,SkeletonJson,AttachmentLoader, AtlasAttachmentLoader, TextureAtlas} from '@esotericsoftware/spine-core'
+// import path from 'path-browserify';
 // import spine from "@esotericsoftware/spine-core"
 
 let cur_path;
-
+// const __dirname = __webpack_require__.c[__dirname]; // webpack 提供的 __dirname
 const path = require('path');
 const fs = require('fs');
 
@@ -14,14 +14,15 @@ let mainWindow
 function createWindow(): void {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 950,
-    height: 670,
+    width: 1000,
+    height: 720,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
+      nodeIntegration: true,
+      sandbox: false,
       preload: join(__dirname, '../preload/index.mjs'),
-      sandbox: false
     },
     icon: path.join(__dirname, '../../resources/ming_ri_xiang.ico')
   })
@@ -83,11 +84,11 @@ ipcMain.handle('getPathAndAction', async (event) => {
         {
           paras['skins'] = [];
           for (const skin of context.skins) {
-    
+
             paras['skins'].push(skin.name);
           }
         }
-    
+
         if(context.animations)
         {
           paras['animations'] = [];
@@ -95,13 +96,13 @@ ipcMain.handle('getPathAndAction', async (event) => {
             paras.animations.push(key);
         });
         }
-    
+
         if(context.skeleton)
           {
             paras['version'] = [];
             paras['version'].push(context.skeleton.spine.match(/(\d+\.\d+?)/)[0])
           }
-    
+
     } catch (error:any) {
       dialog.showErrorBox("错误",error.toString());
     }
