@@ -31,6 +31,10 @@
           </div>
         </body>
     </el-tab-pane>
+    <el-tab-pane label="参数预览" name="ParaView">
+      <!-- <textarea v-model="para_out"></textarea> -->
+      <el-input type="textarea" resize="none" rows="27" v-model="para_out"></el-input>
+    </el-tab-pane>
   </el-tabs>
 
   <el-dialog
@@ -58,7 +62,6 @@ width="500"
 import { ref,onMounted  } from 'vue'
 import sanGuoSkinLayout from "./compenents/sanGuoSkin_layout.vue"
 import sanGuoSkin_layout from './compenents/sanGuoSkin_ChuChang_layout.vue';
-import { dialog } from 'electron';
 
 const skinName = ref<string>('')
 const mainSkin = ref<any>(null)
@@ -69,6 +72,7 @@ const GongJi_enable = ref<boolean>(false)
 const page_selected = ref<string>("SkinPara")
 const dialogVisible = ref<boolean>(false)
 const alertMessage = ref<string>('')
+const para_out = ref<string>('')
 
 onMounted(()=>{
   Init()
@@ -137,7 +141,9 @@ function export_para()
   // alertMessage.value = out;
   // dialogVisible.value = true;
   // createCustomDialog(out);
-  console.log(out)
+  para_out.value = out
+  page_selected.value = "ParaView"
+  // console.log(out)
 }
 
 </script>

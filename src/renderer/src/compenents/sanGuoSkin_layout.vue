@@ -88,10 +88,7 @@
 
 </template>
 <script lang="ts">
-import { json } from 'stream/consumers';
-import { defineComponent, ref, computed, watch, nextTick,defineExpose  } from 'vue'
-import { ipcRenderer } from 'electron'
-
+import {  ref, defineExpose  } from 'vue'
 
 export default {
     setup() {
@@ -147,7 +144,7 @@ export default {
             if(json.value==true)
             {
                 out_para+=
-                ` json:'${json.value}'\n`
+                ` json:'${json.value},'\n`
             }
            
              
@@ -155,7 +152,7 @@ export default {
         }
 
         const getFilePath = async ()=>{
-            const res= await window.api.getPathAndAction();
+            const res= await window.electronAPI.getPathAndAction();
 
             const path:string = res.file_path
             const paras:Record<string,string[]> = res.paras
@@ -199,11 +196,11 @@ getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
     },
 
     created() {
-        window.api.alert_warning((msg:string) => {
+        // window.electronAPI.getFilePath()
+        window.electronAPI.alert_warning((msg:string) => {
             this.dialogVisible = true;
             this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
             console.log(msg)
-
         })
     },
 

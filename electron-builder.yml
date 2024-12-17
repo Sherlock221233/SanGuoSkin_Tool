@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: sanguoskintool
+productName: sanguoskin_tool
 directories:
   buildResources: build
 files:
@@ -11,30 +11,34 @@ files:
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
 asarUnpack:
   - resources/**
+icon: build/mrx.png
+# afterSign: build/notarize.js
 win:
-  executableName: sanguoskintool
+  executableName: sanguoskin_tool
 nsis:
+  oneClick: false  # 让用户选择安装路径
+  allowToChangeInstallationDirectory: true  # 允许用户更改安装目录
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+
 mac:
-  entitlementsInherit: build/entitlements.mac.plist
-  extendInfo:
-    - NSCameraUsageDescription: Application requests access to the device's camera.
-    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
-    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
-    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
-  notarize: false
+  # entitlementsInherit: build/entitlements.mac.plist
+  # extendInfo:
+  #   - NSCameraUsageDescription: Application requests access to the device's camera.
+  #   - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+  #   - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+  #   - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
 dmg:
   artifactName: ${name}-${version}.${ext}
 linux:
-  target:
-    - AppImage
-    - snap
-    - deb
-  maintainer: electronjs.org
-  category: Utility
+  # target:
+  #   - AppImage
+  #   - snap
+  #   - deb
+  # maintainer: electronjs.org
+  # category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false

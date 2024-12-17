@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain,dialog } from 'electron'
+import { app, BrowserWindow, ipcMain,dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -39,7 +39,7 @@ function createWindow(): void {
 }
 
 
-ipcMain.handle('getPathAndAction', async (event) => {
+ipcMain.handle('getPathAndAction', async () => {
   const filePath = await dialog.showOpenDialog(mainWindow, {
     properties: ['openFile'], // 选择文件
     filters: [
@@ -115,12 +115,6 @@ ipcMain.handle('getPathAndAction', async (event) => {
 })
 
 
-function loadAtlas(atlasPath: string) {
-  const atlasData = fs.readFileSync(atlasPath, 'utf-8');
-  const atlas = new TextureAtlas(atlasData);
-
-  return atlas;
-}
 
 
 app.whenReady().then(() => {
@@ -131,9 +125,9 @@ app.whenReady().then(() => {
   })
 
 
-  createWindow()
+createWindow()
 
-  app.on('activate', function () {
+app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
