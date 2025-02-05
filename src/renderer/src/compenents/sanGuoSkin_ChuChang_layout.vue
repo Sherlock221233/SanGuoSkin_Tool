@@ -116,7 +116,7 @@ export default {
                 return null
             }
 
-            const action_para = action1_disable?`[${action.value},${action1.value}]`:`${action.value}`
+            const action_para = action1_disable||action1.value=="无"?`[${action.value},${action1.value}]`:`${action.value}`
 
             let out_para:string = 
             ` name: 'skins_export/${skinName}/${file_name}',\n action: '${action_para}',\n x: [${X_position_1.value}, ${X_position_2.value}],\n y: [${Y_position_1.value}, ${Y_position_2.value}],\n scale: ${Scale.value},\n version: '${version.value}',\n skin:'${Skin.value}',\n`
