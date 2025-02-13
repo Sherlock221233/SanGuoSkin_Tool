@@ -178,13 +178,8 @@ export default {
         return { action1_disable,version,action,filePath,action1,Alpha,Skin,json,X_position_1,X_position_2,Y_position_1,Y_position_2,Scale,Angle,Speed,
 getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
          };
-    },
 
-    created() {
-        window.electronAPI.alert_warning((msg:string) => {
-            this.dialogVisible = true;
-            this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
-            console.log(msg)
+
     // created() {
     //     window.electronAPI.alert_warning((msg:string) => {
     //         this.dialogVisible = true;
@@ -194,5 +189,15 @@ getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
     //     })
     // },
 
-};
+
+    
+    },
+    created() {
+        window.electronAPI.alert_warning((msg:string) => {
+            this.dialogVisible = true;
+            this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
+            console.log(msg)
+        })
+    }
+}
 </script>
