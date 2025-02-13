@@ -141,7 +141,7 @@ function export_para()
       return
     }
   }
-  out+="}"
+  out+="},"
   // const out1 = mainSkin.value!.GetData(skinName.value)
   // alertMessage.value = out;
   // dialogVisible.value = true;
