@@ -116,7 +116,8 @@ export default {
                 return null
             }
 
-            const action_para = action1_disable?`[${action.value},${action1.value}]`:`${action.value}`
+            const action_para = action1_disable.value?`${action.value}`:`[${action.value},${action1.value}]`
+            console.log(action1_disable.value)
 
             let out_para:string = 
             ` name: 'skins_export/${skinName}/${file_name}',\n action: '${action_para}',\n x: [${X_position_1.value}, ${X_position_2.value}],\n y: [${Y_position_1.value}, ${Y_position_2.value}],\n scale: ${Scale.value},\n version: '${version.value}',\n skin:'${Skin.value}',\n`
@@ -179,14 +180,14 @@ getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
          };
     },
 
-    created() {
-        window.electronAPI.alert_warning((msg:string) => {
-            this.dialogVisible = true;
-            this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
-            console.log(msg)
+    // created() {
+    //     window.electronAPI.alert_warning((msg:string) => {
+    //         this.dialogVisible = true;
+    //         this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
+    //         console.log(msg)
 
-        })
-    },
+    //     })
+    // },
 
 };
 </script>
