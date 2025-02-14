@@ -124,8 +124,10 @@ export default {
                 return null
             }
 
+            console.log(version.value.toString());
+
             let out_para:string = 
-            ` name: 'skins_export/${skinName}/${file_name}',\n action: '${action.value}',\n x: [${X_position_1.value}, ${X_position_2.value}],\n y: [${Y_position_1.value}, ${Y_position_2.value}],\n scale: ${Scale.value},\n version: '${version.value}',\n skin:'${Skin.value}',\n`
+            ` name: 'skins_export/${skinName}/${file_name}',\n action: '${action.value}',\n x: [${X_position_1.value}, ${X_position_2.value}],\n y: [${Y_position_1.value}, ${Y_position_2.value}],\n scale: ${Scale.value},\n version: '${version.value%1==0?version.value.toFixed(1):version.value}',\n skin:'${Skin.value}',\n`
             if(actionShan.value!='无')
             {
                 out_para+=
