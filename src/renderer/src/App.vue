@@ -55,9 +55,6 @@ width="500"
 </template>
 
 
-
-
-
 <script setup lang="ts">
 import { ref,onMounted  } from 'vue'
 import sanGuoSkinLayout from "./compenents/sanGuoSkin_layout.vue"
@@ -74,8 +71,16 @@ const dialogVisible = ref<boolean>(false)
 const alertMessage = ref<string>('')
 const para_out = ref<string>('')
 
+
+const showAlert = (msg: string) => {
+    dialogVisible.value = true;
+    alertMessage.value = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数";
+    console.log(msg);
+};
+
 onMounted(()=>{
   Init()
+  window.electronAPI.alert_warning(showAlert);
 })
 
 
@@ -143,8 +148,18 @@ function export_para()
   // createCustomDialog(out);
   para_out.value = out
   page_selected.value = "ParaView"
+
+
+
   // console.log(out)
 }
+
+
+</script>
+
+<script lang="ts">
+
+
 
 </script>
 
