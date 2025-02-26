@@ -26,8 +26,10 @@
             <el-text style="color: red;">攻击动画:</el-text>
             <br>
             <el-checkbox v-model="GongJi_enable" label="启用" style="margin-left: 10px;">启用</el-checkbox>
-            <sanGuoSkin_layout ref = "GongJiSkin">
-            </sanGuoSkin_layout>
+            <!-- <sanGuoSkin_layout ref = "GongJiSkin">
+            </sanGuoSkin_layout> -->
+            <SanGuoSkin_ChuChang_layout ref = "GongJiSkin">
+            </SanGuoSkin_ChuChang_layout>
           </div>
         </body>
     </el-tab-pane>
@@ -59,6 +61,7 @@ width="500"
 import { ref,onMounted  } from 'vue'
 import sanGuoSkinLayout from "./compenents/sanGuoSkin_layout.vue"
 import sanGuoSkin_layout from './compenents/sanGuoSkin_ChuChang_layout.vue';
+import SanGuoSkin_ChuChang_layout from './compenents/sanGuoSkin_ChuChang_layout.vue';
 
 const skinName = ref<string>('')
 const mainSkin = ref<any>(null)
@@ -154,12 +157,26 @@ function export_para()
   // console.log(out)
 }
 
-
+    // created() {
+    //     // window.electronAPI.getFilePath()
+    //     window.electronAPI.alert_warning((msg:string) => {
+    //         this.dialogVisible = true;
+    //         this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
+    //         console.log(msg)
+    //     })
+    // },
 </script>
 
 <script lang="ts">
 
-
+    // created() {
+    //     // window.electronAPI.getFilePath()
+    //     window.electronAPI.alert_warning((msg:string) => {
+    //         this.dialogVisible = true;
+    //         this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
+    //         console.log(msg)
+    //     })
+    // },
 
 </script>
 

@@ -192,12 +192,12 @@ getFilePath,dialogVisible,alertMessage,skinList,actions,GetData
 
     
     },
-    created() {
-        window.electronAPI.alert_warning((msg:string) => {
-            this.dialogVisible = true;
-            this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
-            console.log(msg)
-        })
-    }
+    // created() {
+    //     window.electronAPI.alert_warning((msg:string) => {
+    //         this.dialogVisible = true;
+    //         this.alertMessage = "抱歉，暂不支持直接解析skel二进制数据文件，请自行转换成json或者在最后的输出结果手动填写参数"
+    //         console.log(msg)
+    //     })
+    // }
 }
 </script>
